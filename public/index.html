@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Node.js fullstack app</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="app"></div>
+
+    <template id="users-list">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .user-card {
+                margin: 15px 0;
+                padding: 15px;
+                background-color: #f6f6f6;
+                border-left: 5px solid #4fc08d;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0,0,0,.15);
+                transition: all 200ms;
+                position: relative;
+            }
+            .user-card:hover {
+                background-color: rgba(48, 68, 85, 0.1);
+                transform: scale(1.05);
+            }
+            .remove {
+                color: #fff;
+                line-height: 1;
+                font-size: 12px;
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                background-color: rgba(221, 0, 48, 0.7);
+                border: none;
+                border-radius: 10px;
+                width: 20px;
+                height: 20px;
+                transition: all 200ms;
+                cursor: pointer;
+            }
+            .remove span:nth-child(2) {
+                opacity: 0;
+                display: none;
+                transition: all 200ms;
+            }
+            .remove:hover {
+                width: auto;
+                padding: 0 10px;
+                background-color: #c3002f;
+            }
+            .remove:hover span:first-child {
+                opacity: 0;
+                display: none;
+            }
+            .remove:hover span:nth-child(2) {
+                opacity: 1;
+                display: inline-block;
+            }
+            .edit {
+                color: #fff;
+                line-height: 1;
+                font-size: 12px;
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+                background-color: rgba(97, 218, 251, 0.7);
+                border: none;
+                border-radius: 10px;
+                width: 20px;
+                height: 20px;
+                transition: all 200ms;
+                cursor: pointer;
+                overflow: hidden;
+            }
+            .edit span:nth-child(2) {
+                opacity: 0;
+                display: none;
+                transition: all 200ms;
+            }
+            .edit:hover {
+                width: auto;
+                padding: 0 10px;
+                background-color: #61dafb;
+            }
+            .edit:hover span:first-child {
+                opacity: 0;
+                display: none;
+            }
+            .edit:hover span:nth-child(2) {
+                opacity: 1;
+                display: inline-block;
+            }
+        </style>
+        <div class="user-card">
+            <button class="remove"><span>x</span><span>remove</span></button>
+            <button class="edit"><span>e</span><span>edit</span></button>
+            <slot name="user-name"></slot>
+            <slot name="user-age"></slot>
+            <slot name="user-gpa"></slot>
+        </div>
+    </template>
+
+    <template id="user-form">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            form {
+                width: 100%;
+                margin-top: 15px;
+            }
+            .user-form input {
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 5px;
+                border: 1px solid #eee;
+                width: 100%;
+            }
+            .user-form button {
+                border-radius: 5px;
+                color: #fff;
+                padding: 10px;
+                margin-bottom: 5px;
+                background-color: #304455;
+                border: none;
+                width: 100%;
+                cursor: pointer;
+                transition: all 200ms;
+            }
+            .user-form button:hover {
+                transform: scale(1.05);
+            }
+        </style>
+        <form class="user-form">
+            <h2></h2>
+            <div class="field">
+                <input type="text" name="name" placeholder="Name" />
+            </div>
+            <div class="field">
+                <input type="text" name="age" placeholder="Age" />
+            </div>
+            <div class="field">
+                <input type="text" name="gpa" placeholder="GPA" />
+            </div>
+            <div class="field">
+                <button>Save</button>
+            </div>
+        </form>
+    </template>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

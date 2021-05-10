@@ -1,0 +1,12 @@
+{
+  "name": "vanilla-nodejs-fullstack-app",
+  "version": "1.0.0",
+  "description": "> Testing Node.js APIs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
